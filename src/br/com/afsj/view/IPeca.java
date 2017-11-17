@@ -39,11 +39,11 @@ public class IPeca {
 
 	}
 	public void marcar() {
-		System.out.println("Marcado");
+		System.out.printf("%s Marcado\n", this.p.getNome());
 	}
 	
 	public void desmarcar() {
-		System.out.println("Desmarcado");		
+		System.out.printf("%s Desmarcado\n", this.p.getNome());
 	}
 	
 	public void remover() {

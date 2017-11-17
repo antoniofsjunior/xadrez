@@ -2,7 +2,6 @@ package br.com.afsj.model;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 import br.com.afsj.control.Xadrez;
 import br.com.afsj.view.ICavalo;
 import br.com.afsj.view.IPeao;
@@ -12,6 +11,9 @@ import br.com.afsj.view.ITabuleiro;
 public class Tabuleiro {
 
 	protected static JFrame TELA;
+	
+	public static ArrayPecas listaBrancas = new ArrayPecas();
+	public static ArrayPecas listaPretas = new ArrayPecas();
 
 	protected static int corJogadorAtual = Xadrez.corBRANCA;
 	protected static Peca pecaMarcada = null;
@@ -47,6 +49,7 @@ public class Tabuleiro {
 		iPeaoBranco1.setIconeMarrom(new ImageIcon("imagens/Peao-Brancas-Marrom.png"));
 		iPeaoBranco1.mover(0, 6);
 		TELA.getContentPane().add(iPeaoBranco1.getImagem());
+		listaBrancas.add(peaoBranco1);
 
 		peaoBranco2.setCor(Xadrez.corBRANCA);
 		peaoBranco2.mover(1, 6);
@@ -54,6 +57,7 @@ public class Tabuleiro {
 		iPeaoBranco2.setIconeMarrom(new ImageIcon("imagens/Peao-Brancas-Marrom.png"));
 		iPeaoBranco2.mover(1, 6);
 		TELA.getContentPane().add(iPeaoBranco2.getImagem());
+		listaBrancas.add(peaoBranco2);
 
 		cavaloBranco1.setCor(Xadrez.corBRANCA);
 		cavaloBranco1.mover(1, 7);
@@ -61,6 +65,7 @@ public class Tabuleiro {
 		iCavaloBranco1.setIconeMarrom(new ImageIcon("imagens/Cavalo-Brancas-Marrom.png"));
 		iCavaloBranco1.mover(1, 7);
 		TELA.getContentPane().add(iCavaloBranco1.getImagem());
+		listaBrancas.add(cavaloBranco1);
 		
 		// Pretas
 		peaoPreto1.setCor(Xadrez.corPRETA);
@@ -69,6 +74,7 @@ public class Tabuleiro {
 		iPeaoPreto1.setIconeMarrom(new ImageIcon("imagens/Peao-Pretas-Marrom.png"));
 		iPeaoPreto1.mover(0, 1);
 		TELA.getContentPane().add(iPeaoPreto1.getImagem());
+		listaPretas.add(peaoPreto1);
 
 		cavaloPreto1.setCor(Xadrez.corPRETA);
 		cavaloPreto1.mover(1, 0);
@@ -76,6 +82,7 @@ public class Tabuleiro {
 		iCavaloPreto1.setIconeMarrom(new ImageIcon("imagens/Cavalo-Pretas-Marrom.png"));
 		iCavaloPreto1.mover(1, 0);
 		TELA.getContentPane().add(iCavaloPreto1.getImagem());
+		listaPretas.add(cavaloPreto1);
 		
 		TELA.getContentPane().add(iTabuleiro.getImagem());
 		TELA.setSize(400, 400);
@@ -91,7 +98,7 @@ public class Tabuleiro {
 	}
 	
 	public static void avaliarEventoTabuleiro(int x, int y) {
-		if (pecaMarcada != null) {
+		if ( (pecaMarcada != null) && (x >= 0) && (x <= 7) && (y >=0) && (y <= 7) ) {
 			moverPecaMarcada(x, y);
 		}
 	}

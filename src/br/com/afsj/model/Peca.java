@@ -20,8 +20,19 @@ public abstract class Peca {
 	public int getPosY() {
 		return posY;
 	}
+	public String getNome(){
+		return this.getClass().getName();
+	}
 	
-	public abstract boolean mover(int x, int y);
+	public boolean mover(int x, int y) {
+		if ( this.movimentoOK(x,y) ) {
+			posX = x;
+			posY = y;
+			return true;
+		}
+		return false;
+	}
+	public abstract boolean movimentoOK(int x, int y);
 	
 	public void remover() {
 		this.posX = -1;
